@@ -1,0 +1,24 @@
+{
+  "name": "kborg",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:frontend": "wrangler pages deploy portal/dist",
+    "db:migrate": "wrangler d1 execute kborg --file=./schema/migrations/0001_init.sql",
+    "db:migrate:local": "wrangler d1 execute kborg --local --file=./schema/migrations/0001_init.sql",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "portal:dev": "cd portal && npm run dev",
+    "portal:build": "cd portal && npm run build"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.5.0",
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.0",
+    "wrangler": "^4.68.0"
+  }
+}
