@@ -1,0 +1,23 @@
+name = "kborg"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[ai]
+binding = "AI"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kborg"
+database_id = "a3b1517b-d100-4497-befe-6294be5184e3"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "kborg-content"
+
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "kborg-items"
+
+# API_KEY は wrangler secret put API_KEY で設定する
+# [vars] には secrets を置かない

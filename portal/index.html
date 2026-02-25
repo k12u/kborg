@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kborg Portal</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 0 16px;
+      display: flex;
+      gap: 0;
+    }
+    nav a {
+      display: inline-block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover { color: #111; }
+    nav a.active {
+      color: #0066cc;
+      border-bottom-color: #0066cc;
+    }
+    #app {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0066cc;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .card-title:hover { text-decoration: underline; }
+    .card-summary {
+      color: #666;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .card-meta {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-green { background: #d4edda; color: #155724; }
+    .badge-yellow { background: #fff3cd; color: #856404; }
+    .badge-gray { background: #e9ecef; color: #6c757d; }
+    .badge-blue { background: #cce5ff; color: #004085; }
+    .badge-tag {
+      background: #e8e8e8;
+      color: #444;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      color: #555;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #f0f0f0; }
+    .btn-active { background: #0066cc; color: #fff; border-color: #0066cc; }
+    .detail-section {
+      margin-bottom: 20px;
+    }
+    .detail-section h2 {
+      font-size: 14px;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .score-item {
+      background: #f8f8f8;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .score-item .label { font-size: 11px; color: #888; }
+    .score-item .value { font-size: 20px; font-weight: 700; }
+    .accordion-content {
+      display: none;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-top: 8px;
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .accordion-content.open { display: block; }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #0066cc;
+      box-shadow: 0 0 0 2px rgba(0,102,204,0.2);
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+    }
+    .card-time {
+      font-size: 12px;
+      color: #999;
+    }
+    .similar-list {
+      list-style: none;
+      padding: 0;
+    }
+    .similar-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .similar-list li:last-child { border-bottom: none; }
+    .similar-list a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .similar-list a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#/" data-tab="browse">Browse</a>
+    <a href="#/recent" data-tab="recent">Recent</a>
+    <a href="#/org" data-tab="org">Org</a>
+    <a href="#/search" data-tab="search">Search</a>
+  </nav>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
